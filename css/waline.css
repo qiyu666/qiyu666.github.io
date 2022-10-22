@@ -1,0 +1,34 @@
+button[title^='wb_'],
+button[title^='hj_'],
+button[title^='xdb_'],
+button[title^='xlr_'],
+button[title^='xmr_'] {
+  width: calc(18% - 10px);
+  padding: 6px;
+  margin: 0 8px 8px 0;
+}
+
+button[title^='wb_'] img[alt^='wb_'],
+button[title^='hj_'] img[alt^='hj_'],
+button[title^='xdb_'] img[alt^='xdb_'],
+button[title^='xlr_'] img[alt^='xlr_'],
+button[title^='xmr_'] img[alt^='xmr_'] {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.wl-comment img[alt^='wb_'],
+.wl-comment img[alt^='hj_'],
+.wl-comment img[alt^='xdb_'],
+.wl-comment img[alt^='xlr_'],
+.wl-comment img[alt^='xmr_'],
+.wl-cards img[alt^='wb_'],
+.wl-cards img[alt^='hj_'],
+.wl-cards img[alt^='xdb_'],
+.wl-cards img[alt^='xlr_'],
+.wl-cards img[alt^='xmr_'] {
+  width: 5rem;
+  height: auto;
+}

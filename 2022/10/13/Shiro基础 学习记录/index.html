@@ -1,0 +1,1234 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Archonk">
+  <meta name="keywords" content="archonk,blog">
+  
+    <meta name="description" content="官网 主流 Java 安全框架，不依赖任何容器，可以运行在 Java SE 、Java EE 项目中。 主要用于是对用户访问进行身份认证、授权、会话管理以及加密等。  核心组件  用户、角色、权限关系： 即，给用户指定角色，给角色指定权限    UsernamePasswordToken  用于封装用户登录信息，使用其登录信息来创建令牌Token    SeurityManager  核心部分，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shiro基础 学习记录">
+<meta property="og:url" content="http://blog.archon.top/2022/10/13/Shiro%E5%9F%BA%E7%A1%80%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Archonk&#96;s Blog">
+<meta property="og:description" content="官网 主流 Java 安全框架，不依赖任何容器，可以运行在 Java SE 、Java EE 项目中。 主要用于是对用户访问进行身份认证、授权、会话管理以及加密等。  核心组件  用户、角色、权限关系： 即，给用户指定角色，给角色指定权限    UsernamePasswordToken  用于封装用户登录信息，使用其登录信息来创建令牌Token    SeurityManager  核心部分，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.archon.top/img/shiro.png">
+<meta property="og:image" content="https://blog.archonk.top/emojis/xmr/xmr_109.jpg">
+<meta property="article:published_time" content="2022-10-13T04:57:45.698Z">
+<meta property="article:modified_time" content="2022-10-15T13:14:19.397Z">
+<meta property="article:author" content="Archonk">
+<meta property="article:tag" content="Shiro">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://blog.archon.top/img/shiro.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Shiro基础 学习记录 - Archonk`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/waline.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.archon.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"B90PkPCJaTzRK9xVpeLozCEF-MdYXbMMI","app_key":"9yk7VfRiU5wFStsdIMhuS1Jb","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Archonk`s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/yz/post.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Shiro基础 学习记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-13 12:57" pubdate>
+          2022年10月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Java框架"
+        id="heading-b0953043bbc66a3378df8495a18d4853" role="tab" data-toggle="collapse" href="#collapse-b0953043bbc66a3378df8495a18d4853"
+        aria-expanded="true"
+      >
+        Java框架
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-b0953043bbc66a3378df8495a18d4853"
+           role="tabpanel" aria-labelledby="heading-b0953043bbc66a3378df8495a18d4853">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="JWT"
+        id="heading-1d1fadbd9150349c135781140fffee9d" role="tab" data-toggle="collapse" href="#collapse-1d1fadbd9150349c135781140fffee9d"
+        aria-expanded="false"
+      >
+        JWT
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1d1fadbd9150349c135781140fffee9d"
+           role="tabpanel" aria-labelledby="heading-1d1fadbd9150349c135781140fffee9d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/13/JWT%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="JWT基本使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JWT基本使用</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="MybatisPlus"
+        id="heading-afd808e93aac38f2b8d3998347d5db00" role="tab" data-toggle="collapse" href="#collapse-afd808e93aac38f2b8d3998347d5db00"
+        aria-expanded="false"
+      >
+        MybatisPlus
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-afd808e93aac38f2b8d3998347d5db00"
+           role="tabpanel" aria-labelledby="heading-afd808e93aac38f2b8d3998347d5db00">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/13/Mybatis%20Plus%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="Mybatis Plus 学习记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Mybatis Plus 学习记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Shiro"
+        id="heading-2f5ec23a7af082f8c11dbfce849c74fb" role="tab" data-toggle="collapse" href="#collapse-2f5ec23a7af082f8c11dbfce849c74fb"
+        aria-expanded="true"
+      >
+        Shiro
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-2f5ec23a7af082f8c11dbfce849c74fb"
+           role="tabpanel" aria-labelledby="heading-2f5ec23a7af082f8c11dbfce849c74fb">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/13/Shiro%E5%9F%BA%E7%A1%80%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="Shiro基础 学习记录"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Shiro基础 学习记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="SpringBoot"
+        id="heading-c8428a45869e78fb361ed20b9c23b0a8" role="tab" data-toggle="collapse" href="#collapse-c8428a45869e78fb361ed20b9c23b0a8"
+        aria-expanded="false"
+      >
+        SpringBoot
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c8428a45869e78fb361ed20b9c23b0a8"
+           role="tabpanel" aria-labelledby="heading-c8428a45869e78fb361ed20b9c23b0a8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/13/SpringBoot%E5%87%A0%E7%A7%8D%E4%BB%BB%E5%8A%A1%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="SpringBoot几种任务 学习记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">SpringBoot几种任务 学习记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="SpringCloudAlibaba"
+        id="heading-a65d55ba9d42344b7ea424096e4ad51b" role="tab" data-toggle="collapse" href="#collapse-a65d55ba9d42344b7ea424096e4ad51b"
+        aria-expanded="false"
+      >
+        SpringCloudAlibaba
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a65d55ba9d42344b7ea424096e4ad51b"
+           role="tabpanel" aria-labelledby="heading-a65d55ba9d42344b7ea424096e4ad51b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/13/Spring%20Cloud%20Alibaba%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="Spring Cloud Alibaba 学习记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Spring Cloud Alibaba 学习记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="SpringSecurity"
+        id="heading-e0cce80e1b63cd8633a6f8b56b7fceda" role="tab" data-toggle="collapse" href="#collapse-e0cce80e1b63cd8633a6f8b56b7fceda"
+        aria-expanded="false"
+      >
+        SpringSecurity
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-e0cce80e1b63cd8633a6f8b56b7fceda"
+           role="tabpanel" aria-labelledby="heading-e0cce80e1b63cd8633a6f8b56b7fceda">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/13/SpringSecurity%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="SpringSecurity 基础学习记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">SpringSecurity 基础学习记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Shiro基础 学习记录</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年10月15日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p><a target="_blank" rel="noopener" href="https://shiro.apache.org/">官网</a></p>
+<p>主流 Java 安全框架，不依赖任何容器，可以运行在 Java SE 、Java EE 项目中。</p>
+<p>主要用于是对用户访问进行身份认证、授权、会话管理以及加密等。</p>
+</blockquote>
+<h2 id="核心组件">核心组件</h2>
+<blockquote>
+<p>用户、角色、权限关系：</p>
+<p>即，给用户指定角色，给角色指定权限</p>
+</blockquote>
+<ul>
+<li>
+<p>UsernamePasswordToken</p>
+<ul>
+<li>用于封装用户登录信息，使用其登录信息来创建令牌Token</li>
+</ul>
+</li>
+<li>
+<p>SeurityManager</p>
+<ul>
+<li><strong>核心部分，负责安全认证和授权</strong> 🔴</li>
+</ul>
+</li>
+<li>
+<p>Suject</p>
+<ul>
+<li>Shiro 的一个抽象概念，即包含了用户信息</li>
+</ul>
+</li>
+<li>
+<p>Realm</p>
+<ul>
+<li>开发者的自定义模块，根据需求，将验证和授权的逻辑写在这其中</li>
+</ul>
+</li>
+<li>
+<p>Auth<strong>entica</strong>tionInfo</p>
+<ul>
+<li><strong>用户信息集</strong>，用于<strong>认证</strong></li>
+</ul>
+</li>
+<li>
+<p>Auth<strong>oriza</strong>tionInfo</p>
+<ul>
+<li><strong>角色权限信息集</strong>，用于<strong>授权</strong></li>
+</ul>
+</li>
+<li>
+<p>DefaultWebSecurityManager</p>
+<ul>
+<li>安全管理器，上文中的 Realm <strong>必须</strong>注入其中，才可生效使用</li>
+</ul>
+</li>
+<li>
+<p>ShiroFilterFactoryBean</p>
+<ul>
+<li>过滤器工厂，Shiro的基本运行机制是开发者定制规则，然后交给框架执行，具体执行操作就由这个 Api 创建的一个个 Filter 对象来完成</li>
+</ul>
+</li>
+</ul>
+<h3 id="运行机制">运行机制</h3>
+<p><img src="/img/shiro.png" srcset="/img/loading.gif" lazyload alt="运作流程"></p>
+<h3 id="整合-Spring-Boot">整合 Spring Boot</h3>
+<ul>
+<li>
+<p>导入依赖包</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.shiro<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>shiro-spring<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.8.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- or --&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.shiro<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>shiro-spring-boot-web-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.8.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>自定义 Shiro 过滤器</p>
+<ul>
+<li>AuthorizationInfo --&gt; 用于授权</li>
+<li>AuthenticationInfo --&gt; 用于认证</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AccountRealm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AuthorizingRealm</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> AccountService accountService;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 授权</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> principalCollection</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> AuthorizationInfo <span class="hljs-title function_">doGetAuthorizationInfo</span><span class="hljs-params">(PrincipalCollection principalCollection)</span> &#123;<br>        <span class="hljs-comment">// 获取当前登录的用户信息</span><br>        <span class="hljs-type">Subject</span> <span class="hljs-variable">subject</span> <span class="hljs-operator">=</span> SecurityUtils.getSubject();<br>        <span class="hljs-type">Account</span> <span class="hljs-variable">account</span> <span class="hljs-operator">=</span> (Account) subject.getPrincipal();<br><br>        <span class="hljs-comment">// 设置角色</span><br>        Set&lt;String&gt; roles = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>        roles.add(account.getRole());<br>        <span class="hljs-type">SimpleAuthorizationInfo</span> <span class="hljs-variable">info</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleAuthorizationInfo</span>(roles);<br><br>        <span class="hljs-comment">// 设置权限</span><br>        info.addStringPermission(account.getPerms());<br>        <span class="hljs-keyword">return</span> info;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 认证</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> authenticationToken</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> AuthenticationException</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> AuthenticationInfo <span class="hljs-title function_">doGetAuthenticationInfo</span><span class="hljs-params">(AuthenticationToken authenticationToken)</span> <span class="hljs-keyword">throws</span> AuthenticationException &#123;<br>        <span class="hljs-type">UsernamePasswordToken</span> <span class="hljs-variable">token</span> <span class="hljs-operator">=</span> (UsernamePasswordToken) authenticationToken;<br>        <span class="hljs-type">Account</span> <span class="hljs-variable">account</span> <span class="hljs-operator">=</span> accountService.getUserByName(token.getUsername());<br>        <span class="hljs-keyword">if</span> (account != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleAuthenticationInfo</span>(account, account.getPassword(), getName());<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>配置</p>
+<ul>
+<li>先将自定义 Realm （AccountRealm）注入到 IoC 容器中，再使用 <strong><code>@Qualifier</code></strong> 从容器中取出来，注入到 <strong><code>DefaultWebSecurityManager</code></strong> 中，再同理将其注入到 <strong><code>ShiroFilterFactoryBean</code></strong> 中</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ShiroConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> ShiroFilterFactoryBean <span class="hljs-title function_">shiroFilterFactoryBean</span><span class="hljs-params">(<span class="hljs-meta">@Qualifier(&quot;securityManager&quot;)</span> DefaultWebSecurityManager securityManager)</span> &#123;<br>        <span class="hljs-type">ShiroFilterFactoryBean</span> <span class="hljs-variable">factoryBean</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ShiroFilterFactoryBean</span>();<br>        factoryBean.setSecurityManager(securityManager);<br>        <span class="hljs-keyword">return</span> factoryBean;<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> DefaultWebSecurityManager <span class="hljs-title function_">securityManager</span><span class="hljs-params">(<span class="hljs-meta">@Qualifier(&quot;accountRealm&quot;)</span> AccountRealm accountRealm)</span> &#123;<br>        <span class="hljs-type">DefaultWebSecurityManager</span> <span class="hljs-variable">manager</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultWebSecurityManager</span>();<br>        manager.setRealm(accountRealm);<br>        <span class="hljs-keyword">return</span> manager;<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> AccountRealm <span class="hljs-title function_">accountRealm</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AccountRealm</span>();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>编写认证和授权规则</p>
+<blockquote>
+<p>认证过滤器</p>
+</blockquote>
+<ul>
+<li>anon：无需认证</li>
+<li>authc：必须认证</li>
+<li>authcBasic：需要通过 HTTPBasic 认证</li>
+<li>user：不一定需要认证，被 Shiro 记录过的，比如记住我功能</li>
+</ul>
+<blockquote>
+<p>授权过滤器</p>
+</blockquote>
+<ul>
+<li>perms：必须拥有某个权限才能访问</li>
+<li>role：必须拥有某个角色才能访问</li>
+<li>port：请求的端口必须是指定的才能访问</li>
+<li>rest：请求必须基于 Restful，POST、PUT、GET、DELETE</li>
+<li>ssl：必须是安全的 URL 请求，协议必须是 HTTPS</li>
+</ul>
+</li>
+</ul>
+<h4 id="认证">认证</h4>
+<ul>
+<li>
+<p>在 ShiroConfig 中设置访问权限</p>
+</li>
+<li>
+<p>设置 login 页面跳转</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> ShiroFilterFactoryBean <span class="hljs-title function_">shiroFilterFactoryBean</span><span class="hljs-params">(<span class="hljs-meta">@Qualifier(&quot;securityManager&quot;)</span> DefaultWebSecurityManager securityManager)</span> &#123;<br>    <span class="hljs-type">ShiroFilterFactoryBean</span> <span class="hljs-variable">factoryBean</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ShiroFilterFactoryBean</span>();<br>    factoryBean.setSecurityManager(securityManager);<br><br>    <span class="hljs-comment">// 权限设置</span><br>    Map&lt;String, String&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    map.put(<span class="hljs-string">&quot;/main&quot;</span>, <span class="hljs-string">&quot;authc&quot;</span>);<br>    map.put(<span class="hljs-string">&quot;/manage&quot;</span>, <span class="hljs-string">&quot;perms[manage]&quot;</span>);<br>    map.put(<span class="hljs-string">&quot;/administrator&quot;</span>, <span class="hljs-string">&quot;roles[administrator]&quot;</span>);<br>    factoryBean.setFilterChainDefinitionMap(map);<br><br>    <span class="hljs-comment">// 设置登录页面</span><br>    factoryBean.setLoginUrl(<span class="hljs-string">&quot;/login&quot;</span>);<br>    <span class="hljs-keyword">return</span> factoryBean;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>处理登录逻辑</p>
+<ul>
+<li>先通过 <strong><code>SecurityUtils</code></strong> 的 <strong><code>getSubject()</code></strong> 方法来获得 <strong><code>Suject</code></strong> ，因为这里面包含了用户信息</li>
+<li>通过用户输入的账号密码生成 token</li>
+<li>使用 <strong><code>subject</code></strong> 的 <strong><code>login()</code></strong> 方法来进行身份认证（可以设置断点进行查看，这里会进入自定义的 <strong><code>Realm</code></strong> 中进行校验）
+<ul>
+<li>如果账号密码都正确，将进入首页 index</li>
+<li>如果账号不正确，会抛出 <strong><code>UnknownAccountException</code></strong> 异常</li>
+<li>如果账号正确，密码有误，会抛出 <strong><code>IncorrectCredentialsException</code></strong> 异常</li>
+</ul>
+</li>
+<li>通过 <strong><code>try...catch</code></strong> 来捕获异常</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@PostMapping(&quot;/login&quot;)</span><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">login</span><span class="hljs-params">(String username, String password, Model model)</span> &#123;<br>    <span class="hljs-type">Subject</span> <span class="hljs-variable">subject</span> <span class="hljs-operator">=</span> SecurityUtils.getSubject();<br>    <span class="hljs-type">UsernamePasswordToken</span> <span class="hljs-variable">token</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UsernamePasswordToken</span>(username, password);<br>    <span class="hljs-keyword">try</span> &#123;<br>        subject.login(token);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;index&quot;</span>;<br>    &#125; <span class="hljs-keyword">catch</span> (UnknownAccountException e) &#123;<br>        e.printStackTrace();<br>        model.addAttribute(<span class="hljs-string">&quot;msg&quot;</span>, <span class="hljs-string">&quot;账号有误！&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;login&quot;</span>;<br>    &#125; <span class="hljs-keyword">catch</span> (IncorrectCredentialsException e) &#123;<br>        e.printStackTrace();<br>        model.addAttribute(<span class="hljs-string">&quot;msg&quot;</span>, <span class="hljs-string">&quot;密码错误！&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;login&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="授权">授权</h4>
+<ul>
+<li>
+<p>在 Realm 中编写授权逻辑</p>
+<ul>
+<li>
+<p>先通过 <strong><code>SecurityUtils</code></strong> 的静态方法 <strong><code>getSubject()</code></strong> 来获得 <strong><code>Suject</code></strong> ，因为这里面包含了用户信息</p>
+</li>
+<li>
+<p>通过 <strong><code>Suject</code></strong> 的 <strong><code>getPrincipal()</code></strong> 方法来获取用户信息</p>
+<ul>
+<li>这里因为是在进行用户认证之后，用户信息已经通过 <strong><code>SimpleAuthenticationInfo</code></strong> 存入了 shiro 中</li>
+</ul>
+</li>
+<li>
+<p>将用户的角色信息和权限信息放入 <strong><code>SimpleAuthorizationInfo</code></strong> 中</p>
+</li>
+<li>
+<p>如果用户权限不足以访问该页面将会显示 401 或者跳转到自定义的页面中</p>
+<ul>
+<li>
+<p>设置方法参考下面代码 ⬇️</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 再 ShiroConfig 中进行设置</span><br><br><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> ShiroFilterFactoryBean <span class="hljs-title function_">shiroFilterFactoryBean</span><span class="hljs-params">(<span class="hljs-meta">@Qualifier(&quot;securityManager&quot;)</span> DefaultWebSecurityManager securityManager)</span> &#123;<br>    ...<br>    <span class="hljs-comment">// 设置权限不足跳转页面</span><br>    factoryBean.setUnauthorizedUrl(<span class="hljs-string">&quot;/unauth&quot;</span>);<br>    <span class="hljs-keyword">return</span> factoryBean;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 授权</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> principalCollection</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> AuthorizationInfo <span class="hljs-title function_">doGetAuthorizationInfo</span><span class="hljs-params">(PrincipalCollection principalCollection)</span> &#123;<br>    <span class="hljs-comment">// 获取当前登录的用户信息</span><br>    <span class="hljs-type">Subject</span> <span class="hljs-variable">subject</span> <span class="hljs-operator">=</span> SecurityUtils.getSubject();<br>    <span class="hljs-type">Account</span> <span class="hljs-variable">account</span> <span class="hljs-operator">=</span> (Account) subject.getPrincipal();<br><br>    <span class="hljs-comment">// 设置角色</span><br>    Set&lt;String&gt; roles = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>    roles.add(account.getRole());<br>    <span class="hljs-type">SimpleAuthorizationInfo</span> <span class="hljs-variable">info</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleAuthorizationInfo</span>(roles);<br><br>    <span class="hljs-comment">// 设置权限</span><br>    info.addStringPermission(account.getPerms());<br>    <span class="hljs-keyword">return</span> info;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="退出登录">退出登录</h4>
+<ul>
+<li>
+<p>添加退出登录按钮，点击执行退出登录请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/logout&quot;)</span><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">logout</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Subject</span> <span class="hljs-variable">subject</span> <span class="hljs-operator">=</span> SecurityUtils.getSubject();<br>    subject.logout();<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;index&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="整合-Thymeleaf">整合 Thymeleaf</h3>
+<ul>
+<li>
+<p>引入依赖包</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.github.theborakompanioni<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>thymeleaf-extras-shiro<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>配置 <strong><code>ShiroDialect</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> ShiroDialect <span class="hljs-title function_">shiroDialect</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ShiroDialect</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>引入命名空间</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">xmlns:shiro=&quot;http://www.pollix.at/thymeleaf/shiro&quot;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="简单使用">简单使用</h4>
+<ul>
+<li>
+<p>根据权限以及角色显示不同菜单</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span> <span class="hljs-attr">xmlns:th</span>=<span class="hljs-string">&quot;http://www.thymeleaf.org&quot;</span> <span class="hljs-attr">xmlns:shiro</span>=<span class="hljs-string">&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">title</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">&quot;|拼接-$&#123;title&#125;|&quot;</span>&gt;</span>默认Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;shortcut icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>indeeeeeeeeeeeeeex<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">th:if</span>=<span class="hljs-string">&quot;$&#123;session.account != null&#125;&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">&quot;|$&#123;session.account.username&#125;-欢迎回来!|&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/logout&quot;</span>&gt;</span>退出<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/main&quot;</span>&gt;</span>main<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">shiro:hasPermission</span>=<span class="hljs-string">&quot;manage&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/manage&quot;</span>&gt;</span>manage<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">shiro:hasRole</span>=<span class="hljs-string">&quot;administrator&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/administrator&quot;</span>&gt;</span>administrator<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如有不对，欢迎评论指正，谢谢！！！谢谢观看</p>
+<p><img src="https://blog.archonk.top/emojis/xmr/xmr_109.jpg" srcset="/img/loading.gif" lazyload alt="羞涩"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java%E6%A1%86%E6%9E%B6/" class="category-chain-item">Java框架</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Java%E6%A1%86%E6%9E%B6/Shiro/" class="category-chain-item">Shiro</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Shiro/">#Shiro</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Shiro基础 学习记录</div>
+      <div>http://blog.archon.top/2022/10/13/Shiro基础 学习记录/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Archonk</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年10月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/13/JWT%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="JWT基本使用">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JWT基本使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/13/SpringSecurity%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="SpringSecurity 基础学习记录">
+                        <span class="hidden-mobile">SpringSecurity 基础学习记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.13.0/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.13.0/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"http://v.archonk.top","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://blog.archonk.top/emojis/alus","https://blog.archonk.top/emojis/bilibili","https://blog.archonk.top/emojis/heo","https://blog.archonk.top/emojis/qq","https://blog.archonk.top/emojis/tieba","https://blog.archonk.top/emojis/weibo","https://blog.archonk.top/emojis/xhl","https://blog.archonk.top/emojis/wb","https://blog.archonk.top/emojis/hj","https://blog.archonk.top/emojis/xdb","https://blog.archonk.top/emojis/xlr","https://blog.archonk.top/emojis/xmr"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10,"search":false,"comment":true,"pageview":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      湘ICP备2022003865号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

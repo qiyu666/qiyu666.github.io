@@ -1,0 +1,1055 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Archonk">
+  <meta name="keywords" content="archonk,blog">
+  
+    <meta name="description" content="二叉树 二叉树(Binary tree)，即一个非叶子结点的子节点不超过两个的树形结构，子节点通常被称为左子树，右子树，且不能随意更换位置。(Binary tree)，即一个非叶子结点的子节点不超过两个的树形结构，子节点通常被称为左子树，右子树，且不能随意更换位置。 graph TD; 	A--&gt;B 	A--&gt;C 	B--&gt;D 	B--&gt;E 	C--&gt;F 	C--&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些二叉树的概念">
+<meta property="og:url" content="http://blog.archon.top/2022/10/14/%E4%B8%80%E4%BA%9B%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="Archonk&#96;s Blog">
+<meta property="og:description" content="二叉树 二叉树(Binary tree)，即一个非叶子结点的子节点不超过两个的树形结构，子节点通常被称为左子树，右子树，且不能随意更换位置。(Binary tree)，即一个非叶子结点的子节点不超过两个的树形结构，子节点通常被称为左子树，右子树，且不能随意更换位置。 graph TD; 	A--&gt;B 	A--&gt;C 	B--&gt;D 	B--&gt;E 	C--&gt;F 	C--&amp;g">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.archon.top/img/ds/3%E9%98%B6B%E6%A0%91.png">
+<meta property="og:image" content="http://blog.archon.top/img/ds/RBTree.png">
+<meta property="article:published_time" content="2022-10-14T00:31:41.119Z">
+<meta property="article:modified_time" content="2022-10-19T00:49:54.327Z">
+<meta property="article:author" content="Archonk">
+<meta property="article:tag" content="二叉树">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://blog.archon.top/img/ds/3%E9%98%B6B%E6%A0%91.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>一些二叉树的概念 - Archonk`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/waline.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.archon.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"B90PkPCJaTzRK9xVpeLozCEF-MdYXbMMI","app_key":"9yk7VfRiU5wFStsdIMhuS1Jb","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Archonk`s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/yz/post.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="一些二叉树的概念"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-14 08:31" pubdate>
+          2022年10月14日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据结构"
+        id="heading-0fea7c47d93da5689f31820ee525b367" role="tab" data-toggle="collapse" href="#collapse-0fea7c47d93da5689f31820ee525b367"
+        aria-expanded="true"
+      >
+        数据结构
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0fea7c47d93da5689f31820ee525b367"
+           role="tabpanel" aria-labelledby="heading-0fea7c47d93da5689f31820ee525b367">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="二叉树"
+        id="heading-8178ad6fd9fe5ceeb9d3aa702ad45403" role="tab" data-toggle="collapse" href="#collapse-8178ad6fd9fe5ceeb9d3aa702ad45403"
+        aria-expanded="true"
+      >
+        二叉树
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-8178ad6fd9fe5ceeb9d3aa702ad45403"
+           role="tabpanel" aria-labelledby="heading-8178ad6fd9fe5ceeb9d3aa702ad45403">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/14/%E4%B8%80%E4%BA%9B%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5/" title="一些二叉树的概念"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">一些二叉树的概念</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">一些二叉树的概念</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年10月19日 早上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="二叉树">二叉树</h2>
+<p><a target="_blank" rel="noopener" href="https://oi-wiki.org/graph/tree-basic/">二叉树</a>(Binary tree)，即<strong>一个非叶子结点的子节点不超过两个的树形结构</strong>，子节点通常被称为<strong>左子树，右子树</strong>，且不能随意更换位置。(Binary tree)，即<strong>一个非叶子结点的子节点不超过两个的树形结构</strong>，子节点通常被称为<strong>左子树，右子树</strong>，且不能随意更换位置。</p>
+<pre><code class=" mermaid">graph TD;
+	A--&gt;B
+	A--&gt;C
+	B--&gt;D
+	B--&gt;E
+	C--&gt;F
+	C--&gt;G
+	E--&gt;I
+	G--&gt;H
+</code></pre>
+<p>一个深度为k的二叉树，至多包含<strong>2<sup>k+1</sup>-1</strong>个节点，且某一层i组多拥有<strong>2<sup>i-1</sup><strong>个节点，根节点所在的深度为</strong>k=0</strong></p>
+<h3 id="遍历方式">遍历方式</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ub4y147Zv/?spm_id_from=333.788.recommend_more_video.0&amp;vd_source=e6fd209d64d867588f07a31a3039763e">【纯干货】三分钟教会你遍历二叉树！学不会举报我！！</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1vv411t7mW/?spm_id_from=333.337.search-card.all.click&amp;vd_source=e6fd209d64d867588f07a31a3039763e">前序遍历 中序遍历 后序遍历</a></p>
+</blockquote>
+<pre><code class=" mermaid">graph TD;
+	A--&gt;B
+	A--&gt;C
+	B--&gt;D
+	B--&gt;E
+	C--&gt;F
+	C--&gt;G
+	E--&gt;I
+	G--&gt;H
+</code></pre>
+<p>如上图，分别用三种方式遍历</p>
+<ul>
+<li>
+<p>前序遍历：根左右</p>
+<p>ABDEICFGH</p>
+</li>
+<li>
+<p>中序遍历：左根右</p>
+<p>DBIEAFCHG</p>
+</li>
+<li>
+<p>后序遍历：左右根</p>
+<p>DIEBFHGCA</p>
+</li>
+</ul>
+<h2 id="满二叉树-完全二叉树-完满二叉树">满二叉树 &amp; 完全二叉树 &amp; 完满二叉树</h2>
+<p>满二叉树(Perfect Binary Tree)，即<strong>一颗深度为k，且有2<sup>k</sup>-1个节点的二叉树</strong>，又称为完美二叉树。也是完全二叉树的一种<strong>特殊形态</strong></p>
+<pre><code class=" mermaid">graph TD;
+	1--&gt;2
+	1--&gt;3
+	2--&gt;4
+	2--&gt;5
+	3--&gt;6
+	3--&gt;7
+</code></pre>
+<p>在一颗二叉树中，除了最后一层的节点外，其余的层数都是满的，且最后一层的节点要么是满的，要么是右边连续缺失，那么这课二叉树可以称为<strong>完全二叉树</strong>(Complete Binary Tree)</p>
+<pre><code class=" mermaid">graph TD;
+	1--&gt;2
+	1--&gt;3
+	2--&gt;4
+	2--&gt;5
+</code></pre>
+<p>如下图则不是</p>
+<pre><code class=" mermaid">graph TD;
+	1--&gt;2
+	1--&gt;3
+	2--&gt;4
+	3--&gt;5
+	3--&gt;6
+</code></pre>
+<p>完满二叉树(Full Binary Tree)，即<strong>所有非叶子节点的度(子节点数)都为2</strong>，也就是说<strong>只要有子节点，那就是两个</strong></p>
+<pre><code class=" mermaid">graph TD;
+	1--&gt;2
+	1--&gt;3
+	3--&gt;4
+	3--&gt;5
+	4--&gt;6
+	4--&gt;7
+</code></pre>
+<h2 id="大顶堆-小顶堆">大顶堆 &amp; 小顶堆</h2>
+<p>大顶堆和小顶堆都隶属于<a target="_blank" rel="noopener" href="https://oi-wiki.org/ds/binary-heap/">二叉堆</a>(binary heap)。同样也属于完全二叉树，是一种经过排序的完全二叉树</p>
+<blockquote>
+<p>二叉堆满足堆特性：父节点的键值总是保持固定的位置，这关系到任何一个子节点的键值，且每个节点的左子树和右子树都是一个二叉堆</p>
+</blockquote>
+<p>这种结构一般用 <strong>数组</strong> 表示，对于任何一个合法下标i，有其左节点下标为 <code>2*i+1</code>，其右节点下标为 <code>2*i+2</code>，其父节点下标为 <code>(i-1)/2</code>。<strong>注意这里的 <code>(i-1)</code> 需要向下取整</strong>，可以表示为 <code>(i &gt;&gt;&gt; 1)</code></p>
+<p>小顶堆(左)：根结点的键值是所有堆结点键值中最<strong>小</strong>者，又可称为最小堆</p>
+<p>大顶堆(右)：根结点的键值是所有堆结点键值中最<strong>大</strong>者，又可称为最大堆</p>
+<pre><code class=" mermaid">graph TD;
+	1--&gt;2
+	1--&gt;3
+	2--&gt;4
+	2--&gt;5
+       3--&gt;6
+       3--&gt;7
+
+
+	12--&gt;11
+	12--&gt;10
+	10--&gt;9
+	10--&gt;8
+	10
+</code></pre>
+<h2 id="二叉搜索树">二叉搜索树</h2>
+<p>当一颗二叉树满足以下性质即可称为<a target="_blank" rel="noopener" href="https://oi-wiki.org/ds/bst/">二叉搜索树</a>(Binary Search Tree，简称<strong>BST</strong>)，又称二叉排序树，二叉查找树</p>
+<ul>
+<li>任意节点的值<strong>大于</strong>其左子树的值</li>
+<li>任意节点的值<strong>小于</strong>其右子树的值</li>
+<li>任意非叶子节点和其子节点又可看作二叉搜索树</li>
+<li>没有键值相等的节点</li>
+</ul>
+<pre><code class=" mermaid">graph TD;
+	10--&gt;5
+	10--&gt;15
+	5--&gt;4
+	5--&gt;8
+	15--&gt;12
+	15--&gt;18
+	8--&gt;7
+	8--&gt;9
+</code></pre>
+<h2 id="自平衡二叉查找树-AVL-树">自平衡二叉查找树(AVL 树)</h2>
+<p>自平衡二叉查找树(Self-Balancing Binary Search Tree)，又称平衡二叉树，高度平衡树，是一种结构平衡的二叉搜索树，所以它先行条件就是该二叉树<strong>必须为二叉搜索树</strong>，再就是任意非叶子节点的子节点高度差不超过1，且其子节点又可看做平衡二叉树。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://oi-wiki.org/ds/avl/">AVL 树</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/isunbin/article/details/81707606">平衡二叉树</a></p>
+</blockquote>
+<pre><code class=" mermaid">graph TD;
+    50--&gt;45
+    50--&gt;55
+    45--&gt;44
+    45--&gt;46
+    55--&gt;54
+    55--&gt;56
+    44--&gt;43
+</code></pre>
+<h2 id="B树">B树</h2>
+<p>B树，又称B-树，是<strong>一种多路平衡搜索树</strong>。一颗 m 阶的B树(m阶B树)，或为空，或是满足以下特性的 m 叉树</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://oi-wiki.org/ds/b-tree/">B树</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lanleihhh/article/details/124363754">B树-多路平衡查找树</a></p>
+</blockquote>
+<ul>
+<li>满足平衡树的基本特性</li>
+<li>所有节点至多有 m 个子节点，且至多有 m-1 个元素</li>
+<li>根节点至少有两个子节点</li>
+<li>除根节点和叶子节点外的节点，至少拥有 <code>ceil(m / 2)</code> 个节点
+<ul>
+<li>假如 <code>m=3</code>，有 <code>ceil(3 / 2)=ceil(1.5)=2</code></li>
+</ul>
+</li>
+<li>有 <strong>k</strong> 个关键字的非叶子节点，拥有 <strong>k+1</strong>个子节点</li>
+<li>所有叶子节点高度一致，且按照关键字，从大到小排序
+<ul>
+<li>如下图中(2,6)的子节点内的元素
+<ul>
+<li>左子树为小于2的元素</li>
+<li>中子树为大于2小于6的元素</li>
+<li>右子树为大于6的元素</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/ds/3%E9%98%B6B%E6%A0%91.png" srcset="/img/loading.gif" lazyload alt="3阶B树" title="3阶B树"></p>
+<h2 id="2-3-4树-2-3树">2-3-4树 &amp; 2-3树</h2>
+<p>234树，即4阶B树。</p>
+<p>23树，即3阶B树。</p>
+<h2 id="红黑树">红黑树</h2>
+<p><a target="_blank" rel="noopener" href="https://oi-wiki.org/ds/rbtree/">红黑树</a>，是一种平衡二叉搜索树。平衡二叉搜索树的前提是，该树必须是二叉搜索树。所以红黑树自然也有二叉搜索树的特征。但在平衡方面，红黑树并没有这么追求高度平衡。</p>
+<p>上述之外，红黑树也有自己特有的一些规则。</p>
+<ul>
+<li>根节点必须为黑色</li>
+<li>所以的节点非黑即红，且到达所有可达叶子节点的黑色节点数量必须一致</li>
+<li>红色节点的子节点必须为黑色</li>
+<li>默认将 <strong>null</strong> 节点作为叶子节点，且为黑色
+<ul>
+<li>比如图中的 <strong>-1</strong> 这个红色节点再往下默认还会有两个 <strong>黑色的null节点</strong> 作为叶子节点</li>
+</ul>
+</li>
+<li>根节点到叶子节点的最长路径不会超过最短路径的2倍</li>
+</ul>
+<p><img src="/img/ds/RBTree.png" srcset="/img/loading.gif" lazyload alt="RBTree" title="红黑树"></p>
+<h3 id="红黑树旋转小口诀">红黑树旋转小口诀</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/475836398">红黑树变色和旋转，图文案例讲解</a></p>
+<p>左旋：<strong>左右左右</strong>，也就是<strong>左</strong>旋是把该节点作为其<strong>右</strong>孩子的<strong>左</strong>孩子，把赶走的节点作为该节点的<strong>右</strong>孩子<br>
+右旋：<strong>右左右左</strong>，也就是<strong>右</strong>旋是把该节点作为其<strong>左</strong>孩子的<strong>右</strong>孩子，把赶走的节点作为该节点的<strong>左</strong>孩子</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="category-chain-item">二叉树</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>一些二叉树的概念</div>
+      <div>http://blog.archon.top/2022/10/14/一些二叉树的概念/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Archonk</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年10月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedList/" title="集合源码解析 - LinkedList">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">集合源码解析 - LinkedList</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20ArrayList/" title="集合源码解析 - ArrayList">
+                        <span class="hidden-mobile">集合源码解析 - ArrayList</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.13.0/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.13.0/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"http://v.archonk.top","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://blog.archonk.top/emojis/alus","https://blog.archonk.top/emojis/bilibili","https://blog.archonk.top/emojis/heo","https://blog.archonk.top/emojis/qq","https://blog.archonk.top/emojis/tieba","https://blog.archonk.top/emojis/weibo","https://blog.archonk.top/emojis/xhl","https://blog.archonk.top/emojis/wb","https://blog.archonk.top/emojis/hj","https://blog.archonk.top/emojis/xdb","https://blog.archonk.top/emojis/xlr","https://blog.archonk.top/emojis/xmr"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10,"search":false,"comment":true,"pageview":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('mermaid' in window) {
+        mermaid.init();
+      }
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      湘ICP备2022003865号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
