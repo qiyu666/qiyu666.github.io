@@ -20,30 +20,30 @@
   
     <meta name="description" content="Stack &amp; Queue &amp; ArrayDeque 部分源码剖析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="集合源码解析 - Stack &amp; Queue &amp; ArrayDeque">
+<meta property="og:title" content="Stack &amp; Queue &amp; ArrayDeque 源码分析">
 <meta property="og:url" content="http://blog.archon.top/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20Stack%20&%20Queue%20&%20ArrayDeque/index.html">
 <meta property="og:site_name" content="Archonk&#96;s Blog">
 <meta property="og:description" content="Stack &amp; Queue &amp; ArrayDeque 部分源码剖析">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://blog.archon.top/img/java/ArrayDeque_addFirst.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/ArrayDeque_doubleCapacity.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/ArrayDeque_addLast.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/ArrayDeque_addFirst.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/ArrayDeque_addFirst.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/ArrayDeque_doubleCapacity.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/ArrayDeque_addLast.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/ArrayDeque_addFirst.png">
 <meta property="og:image" content="https://blog.archonk.top/emojis/xmr/xmr_109.jpg">
 <meta property="article:published_time" content="2022-10-14T00:36:53.045Z">
-<meta property="article:modified_time" content="2022-10-26T09:13:05.455Z">
+<meta property="article:modified_time" content="2022-10-26T09:27:07.579Z">
 <meta property="article:author" content="Archonk">
 <meta property="article:tag" content="Queue">
 <meta property="article:tag" content="Stack">
 <meta property="article:tag" content="ArrayDeque">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://blog.archon.top/img/java/ArrayDeque_addFirst.png">
+<meta name="twitter:image" content="https://blog.archonk.top/img/java/ArrayDeque_addFirst.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>集合源码解析 - Stack &amp; Queue &amp; ArrayDeque - Archonk`s Blog</title>
+  <title>Stack &amp; Queue &amp; ArrayDeque 源码分析 - Archonk`s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -241,7 +241,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="集合源码解析 - Stack &amp; Queue &amp; ArrayDeque"></span>
+            <span id="subtitle" data-typed-text="Stack &amp; Queue &amp; ArrayDeque 源码分析"></span>
           
         </div>
 
@@ -275,7 +275,7 @@
         
         
         
-          62 分钟
+          61 分钟
         
       </span>
     
@@ -411,73 +411,73 @@
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20ArrayList/" title="集合源码解析 - ArrayList"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20ArrayList/" title="ArrayList 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - ArrayList</span>
+          <span class="category-post">ArrayList 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20&amp;%20HashSet/" title="集合源码解析 - HashMap &amp; HashSet"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20&amp;%20HashSet/" title="HashMap &amp; HashSet 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - HashMap &amp; HashSet</span>
+          <span class="category-post">HashMap &amp; HashSet 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/20/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20%E7%BA%A2%E9%BB%91%E6%A0%91%E9%83%A8%E5%88%86/" title="集合源码解析 - HashMap 红黑树部分"
+        <a href="/2022/10/20/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20%E7%BA%A2%E9%BB%91%E6%A0%91%E9%83%A8%E5%88%86/" title="HashMap 红黑树部分源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - HashMap 红黑树部分</span>
+          <span class="category-post">HashMap 红黑树部分源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedHashMap%20&amp;%20LinkedHashSet/" title="集合源码解析 - LinkedHashMap &amp; LinkedHashSet"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedHashMap%20&amp;%20LinkedHashSet/" title="LinkedHashMap &amp; LinkedHashSet 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - LinkedHashMap &amp; LinkedHashSet</span>
+          <span class="category-post">LinkedHashMap &amp; LinkedHashSet 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedList/" title="集合源码解析 - LinkedList"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedList/" title="LinkedList 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - LinkedList</span>
+          <span class="category-post">LinkedList 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="集合源码解析 - PriorityQueue"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="PriorityQueue 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - PriorityQueue</span>
+          <span class="category-post">PriorityQueue 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20Stack%20&amp;%20Queue%20&amp;%20ArrayDeque/" title="集合源码解析 - Stack &amp; Queue &amp; ArrayDeque"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20Stack%20&amp;%20Queue%20&amp;%20ArrayDeque/" title="Stack &amp; Queue &amp; ArrayDeque 源码分析"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">集合源码解析 - Stack &amp; Queue &amp; ArrayDeque</span>
+          <span class="category-post">Stack &amp; Queue &amp; ArrayDeque 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/15/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20TreeMap%20&amp;%20TreeSet/" title="集合源码解析 - TreeMap &amp; TreeSet"
+        <a href="/2022/10/15/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20TreeMap%20&amp;%20TreeSet/" title="TreeMap &amp; TreeSet 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - TreeMap &amp; TreeSet</span>
+          <span class="category-post">TreeMap &amp; TreeSet 源码分析</span>
         </a>
       
     
@@ -504,7 +504,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">集合源码解析 - Stack &amp; Queue &amp; ArrayDeque</h1>
+            <h1 style="display: none">Stack &amp; Queue &amp; ArrayDeque 源码分析</h1>
             
               <p class="note note-info">
                 
@@ -519,7 +519,6 @@
                 
                 <p>Stack &amp; Queue &amp; ArrayDeque 部分源码剖析</p>
 <span id="more"></span>
-<h1>Stack &amp; Queue &amp; ArrayDeque</h1>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.pdai.tech/md/java/collection/java-collection-Queue&amp;Stack.html">Stack &amp; Queue 源码解析</a></p>
 <p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/164795238">栈：为什么不推荐使用 Java Stack 类</a></p>
@@ -666,7 +665,7 @@
 <h2 id="ArrayDeque">ArrayDeque</h2>
 <p><em><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayDeque.html">ArrayDeque</a></em> 是 <em>Deque</em> 的一个通用实现，<em>LinkedList</em> 同样也是。但官方更推荐使用 <em>ArrayDeque</em> 作为 <strong>栈</strong> 或者 <strong>队列</strong> 。但注意 <em>ArrayDeque</em> 是线程不安全的，必要时需要手动同步。而且不允许放入 <em>null</em> 元素。</p>
 <p><em>ArrayDeque</em> 底层通过数组实现，但为了满足能在数组两端插入或者删除元素，数组必须是循环的，即 <strong>循环数组</strong>，即数组的最后一个元素的下一个元素是整个数组的第一个元素。</p>
-<p><img src="/img/java/ArrayDeque_addFirst.png" srcset="/img/loading.gif" lazyload alt="添加元素到头部"></p>
+<p><img src="https://blog.archonk.top/img/java/ArrayDeque_addFirst.png" srcset="/img/loading.gif" lazyload alt="添加元素到头部"></p>
 <h3 id="类里的变量和常量">类里的变量和常量</h3>
 <p>类中定义了三个全局变量和一个常量</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 底层数据结构</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">transient</span> Object[] elements; <span class="hljs-comment">// non-private to simplify nested class access</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 队列的第一个元素</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">transient</span> <span class="hljs-type">int</span> head;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 队列的最后一个元素</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">transient</span> <span class="hljs-type">int</span> tail;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 默认最小的初始化容量 且必须为 2 的倍数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">MIN_INITIAL_CAPACITY</span> <span class="hljs-operator">=</span> <span class="hljs-number">8</span>;<br></code></pre></td></tr></table></figure>
@@ -682,7 +681,7 @@
 <h3 id="扩容">扩容</h3>
 <p>在插入元素之后，就要判断当前的数组容量。当 <code>head == tail</code> 时，就表明要对数组进行扩容了</p>
 <p><em>ArrayDeque</em> 扩容是通过申请一个比原数组大两倍的数组，然后将原数组中的元素复制到新数组中。</p>
-<p><img src="/img/java/ArrayDeque_doubleCapacity.png" srcset="/img/loading.gif" lazyload alt="扩容"></p>
+<p><img src="https://blog.archonk.top/img/java/ArrayDeque_doubleCapacity.png" srcset="/img/loading.gif" lazyload alt="扩容"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doubleCapacity</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">assert</span> head == tail;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> elements.length;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> n - p; <span class="hljs-comment">// number of elements to the right of p</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">newCapacity</span> <span class="hljs-operator">=</span> n &lt;&lt; <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (newCapacity &lt; <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalStateException</span>(<span class="hljs-string">&quot;Sorry, deque too big&quot;</span>);<br>    Object[] a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[newCapacity];<br>    <span class="hljs-comment">// 分两段复制 先复制 head 后面的，再复制前面的</span><br>    System.arraycopy(elements, p, a, <span class="hljs-number">0</span>, r);<br>    System.arraycopy(elements, <span class="hljs-number">0</span>, a, r, p);<br>    elements = a;<br>    head = <span class="hljs-number">0</span>;<br>    tail = n;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="添加元素的方法">添加元素的方法</h3>
 <ul>
@@ -699,7 +698,7 @@
 <p>如果这时 <em>head</em> 也等于 5，那么就会触发 <strong>扩容</strong>，从扩容源码里，可以看到，在方法末尾将 <em>tail</em> 等于原数组的长度也就是 8，但由于数组下标从 0 开始，所有 8 是第 9 个元素的下标，所有由此可见，<em>tail</em> 总是会指向下一个可插入的空间</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 只保留关键部分，具体内容参上</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doubleCapacity</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> elements.length;<br>    ... <br>    System.arraycopy(elements, p, a, <span class="hljs-number">0</span>, r);<br>    System.arraycopy(elements, <span class="hljs-number">0</span>, a, r, p);<br>    ...<br>    head = <span class="hljs-number">0</span>;<br>    tail = n;<br>&#125;<br></code></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addLast</span><span class="hljs-params">(E e)</span> &#123;<br>    <span class="hljs-comment">// 先检查 e 是否为 null</span><br>    <span class="hljs-keyword">if</span> (e == <span class="hljs-literal">null</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NullPointerException</span>();<br>    elements[tail] = e;<br>    <span class="hljs-keyword">if</span> ( (tail = (tail + <span class="hljs-number">1</span>) &amp; (elements.length - <span class="hljs-number">1</span>)) == head) <br>        doubleCapacity();<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="/img/java/ArrayDeque_addLast.png" srcset="/img/loading.gif" lazyload alt="添加元素到末尾"></p>
+<p><img src="https://blog.archonk.top/img/java/ArrayDeque_addLast.png" srcset="/img/loading.gif" lazyload alt="添加元素到末尾"></p>
 </li>
 <li>
 <p><code>addFirst(E e)</code>：往数组头部插入元素。</p>
@@ -710,7 +709,7 @@
 <figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs tap">-1 <br>原码 即<span class="hljs-number"> 1 </span>的二进制数 001<br>反码 即 在原码的基础上取反 110<br>然后 +<span class="hljs-number"> 1 </span>得到 补码 111<br><br>-1 =&gt; 111<br><span class="hljs-number"> 7 </span>=&gt; 111<br> &amp; =&gt;<span class="hljs-number"> 111 </span>= 7<br></code></pre></td></tr></table></figure>
 <p>所以，由上可见，在插入时也不必担心下标越界问题。且 <em>head</em> 只可能在创建后的第一次插入或者扩容后的第一次插入等于 -1</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addFirst</span><span class="hljs-params">(E e)</span> &#123;<br>    <span class="hljs-comment">// 先检查 e 是否为 null</span><br>    <span class="hljs-keyword">if</span> (e == <span class="hljs-literal">null</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NullPointerException</span>();<br>    elements[head = (head - <span class="hljs-number">1</span>) &amp; (elements.length - <span class="hljs-number">1</span>)] = e;<br>    <span class="hljs-keyword">if</span> (head == tail)<br>        doubleCapacity();<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="/img/java/ArrayDeque_addFirst.png" srcset="/img/loading.gif" lazyload alt="添加元素到头部"></p>
+<p><img src="https://blog.archonk.top/img/java/ArrayDeque_addFirst.png" srcset="/img/loading.gif" lazyload alt="添加元素到头部"></p>
 </li>
 <li>
 <p><code>offer(E e)、offerFirst(E e)、offerLast(E e)、push(E e)</code>：直接调用上述几个方法，来实现添加元素，就不做过多的赘述。</p>
@@ -798,7 +797,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>集合源码解析 - Stack &amp; Queue &amp; ArrayDeque</div>
+      <div>Stack &amp; Queue &amp; ArrayDeque 源码分析</div>
       <div>http://blog.archon.top/2022/10/14/集合源码解析 - Stack &amp; Queue &amp; ArrayDeque/</div>
     </div>
     <div class="license-meta">
@@ -843,9 +842,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="集合源码解析 - PriorityQueue">
+                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="PriorityQueue 源码分析">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">集合源码解析 - PriorityQueue</span>
+                        <span class="hidden-mobile">PriorityQueue 源码分析</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -853,8 +852,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedList/" title="集合源码解析 - LinkedList">
-                        <span class="hidden-mobile">集合源码解析 - LinkedList</span>
+                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedList/" title="LinkedList 源码分析">
+                        <span class="hidden-mobile">LinkedList 源码分析</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

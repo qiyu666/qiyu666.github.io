@@ -20,40 +20,40 @@
   
     <meta name="description" content="TreeMap &amp; TreeSet 部分源码剖析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="集合源码解析 - TreeMap &amp; TreeSet">
+<meta property="og:title" content="TreeMap &amp; TreeSet 源码分析">
 <meta property="og:url" content="http://blog.archon.top/2022/10/15/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20TreeMap%20&%20TreeSet/index.html">
 <meta property="og:site_name" content="Archonk&#96;s Blog">
 <meta property="og:description" content="TreeMap &amp; TreeSet 部分源码剖析">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTInsertBase.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTInsert1.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTInsert1Succ.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTInsert2.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTInsert2Succ.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTInsert3.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTInsert3Succ-1.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTInsert3Succ-2.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTDel-1-1.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTDel-1-2.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTDel-1-2.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTDel-2.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTDel-3-1.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTDel-3-2.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTDel-3-2.png">
-<meta property="og:image" content="http://blog.archon.top/img/java/RBTDel-4.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTInsertBase.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTInsert1.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTInsert1Succ.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTInsert2.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTInsert2Succ.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTInsert3.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTInsert3Succ-1.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTInsert3Succ-2.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTDel-1-1.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTDel-1-2.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTDel-1-2.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTDel-2.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTDel-3-1.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTDel-3-2.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTDel-3-2.png">
+<meta property="og:image" content="https://blog.archonk.top/img/java/RBTDel-4.png">
 <meta property="article:published_time" content="2022-10-15T12:40:45.184Z">
-<meta property="article:modified_time" content="2022-10-26T09:13:16.664Z">
+<meta property="article:modified_time" content="2022-10-26T09:27:10.342Z">
 <meta property="article:author" content="Archonk">
 <meta property="article:tag" content="TreeMap">
 <meta property="article:tag" content="TreeSet">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://blog.archon.top/img/java/RBTInsertBase.png">
+<meta name="twitter:image" content="https://blog.archonk.top/img/java/RBTInsertBase.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>集合源码解析 - TreeMap &amp; TreeSet - Archonk`s Blog</title>
+  <title>TreeMap &amp; TreeSet 源码分析 - Archonk`s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -251,7 +251,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="集合源码解析 - TreeMap &amp; TreeSet"></span>
+            <span id="subtitle" data-typed-text="TreeMap &amp; TreeSet 源码分析"></span>
           
         </div>
 
@@ -421,73 +421,73 @@
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20ArrayList/" title="集合源码解析 - ArrayList"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20ArrayList/" title="ArrayList 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - ArrayList</span>
+          <span class="category-post">ArrayList 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20&amp;%20HashSet/" title="集合源码解析 - HashMap &amp; HashSet"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20&amp;%20HashSet/" title="HashMap &amp; HashSet 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - HashMap &amp; HashSet</span>
+          <span class="category-post">HashMap &amp; HashSet 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/20/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20%E7%BA%A2%E9%BB%91%E6%A0%91%E9%83%A8%E5%88%86/" title="集合源码解析 - HashMap 红黑树部分"
+        <a href="/2022/10/20/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20%E7%BA%A2%E9%BB%91%E6%A0%91%E9%83%A8%E5%88%86/" title="HashMap 红黑树部分源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - HashMap 红黑树部分</span>
+          <span class="category-post">HashMap 红黑树部分源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedHashMap%20&amp;%20LinkedHashSet/" title="集合源码解析 - LinkedHashMap &amp; LinkedHashSet"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedHashMap%20&amp;%20LinkedHashSet/" title="LinkedHashMap &amp; LinkedHashSet 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - LinkedHashMap &amp; LinkedHashSet</span>
+          <span class="category-post">LinkedHashMap &amp; LinkedHashSet 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedList/" title="集合源码解析 - LinkedList"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedList/" title="LinkedList 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - LinkedList</span>
+          <span class="category-post">LinkedList 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="集合源码解析 - PriorityQueue"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="PriorityQueue 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - PriorityQueue</span>
+          <span class="category-post">PriorityQueue 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20Stack%20&amp;%20Queue%20&amp;%20ArrayDeque/" title="集合源码解析 - Stack &amp; Queue &amp; ArrayDeque"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20Stack%20&amp;%20Queue%20&amp;%20ArrayDeque/" title="Stack &amp; Queue &amp; ArrayDeque 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - Stack &amp; Queue &amp; ArrayDeque</span>
+          <span class="category-post">Stack &amp; Queue &amp; ArrayDeque 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/15/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20TreeMap%20&amp;%20TreeSet/" title="集合源码解析 - TreeMap &amp; TreeSet"
+        <a href="/2022/10/15/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20TreeMap%20&amp;%20TreeSet/" title="TreeMap &amp; TreeSet 源码分析"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">集合源码解析 - TreeMap &amp; TreeSet</span>
+          <span class="category-post">TreeMap &amp; TreeSet 源码分析</span>
         </a>
       
     
@@ -514,7 +514,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">集合源码解析 - TreeMap &amp; TreeSet</h1>
+            <h1 style="display: none">TreeMap &amp; TreeSet 源码分析</h1>
             
               <p class="note note-info">
                 
@@ -529,7 +529,6 @@
                 
                 <p>TreeMap &amp; TreeSet 部分源码剖析</p>
 <span id="more"></span>
-<h1>TreeMap &amp; TreeSet</h1>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.tianxiaobo.com/2018/01/11/TreeMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">TreeMap源码分析</a></p>
 </blockquote>
@@ -553,13 +552,13 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/** From CLR */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fixAfterInsertion</span><span class="hljs-params">(Entry&lt;K,V&gt; x)</span> &#123;<br>    x.color = RED;<br>	<span class="hljs-comment">// 根节点为空或者父节点为黑色节点，则直接插入</span><br>    <span class="hljs-keyword">while</span> (x != <span class="hljs-literal">null</span> &amp;&amp; x != root &amp;&amp; x.parent.color == RED) &#123;<br>        <span class="hljs-comment">// 成立则说明 x 在树的左边，否则 x 在树的右边</span><br>        <span class="hljs-comment">// 两种情况，是完全对称的</span><br>        <span class="hljs-keyword">if</span> (parentOf(x) == leftOf(parentOf(parentOf(x)))) &#123;<br>            Entry&lt;K,V&gt; y = rightOf(parentOf(parentOf(x)));<br>            <span class="hljs-keyword">if</span> (colorOf(y) == RED) &#123;<br>                setColor(parentOf(x), BLACK);<br>                setColor(y, BLACK);<br>                setColor(parentOf(parentOf(x)), RED);<br>                x = parentOf(parentOf(x));<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">if</span> (x == rightOf(parentOf(x))) &#123;<br>                    x = parentOf(x);<br>                    rotateLeft(x);<br>                &#125;<br>                setColor(parentOf(x), BLACK);<br>                setColor(parentOf(parentOf(x)), RED);<br>                rotateRight(parentOf(parentOf(x)));<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            Entry&lt;K,V&gt; y = leftOf(parentOf(parentOf(x)));<br>            <span class="hljs-comment">// 这里成立是 当x，x的祖父节点，x的祖父节点的左节点都为红色</span><br>            <span class="hljs-comment">// 将 x 的父节点变成 黑色</span><br>            <span class="hljs-comment">// 将 x 的祖父节点的左节点变成 黑色</span><br>            <span class="hljs-comment">// 将 x 的祖父节点变成 红色</span><br>            <span class="hljs-comment">// 否则 先判断 x 是否为 左节点</span><br>            <span class="hljs-comment">// 是的话 先进行一次右旋 再变色，然后进行左旋</span><br>            <span class="hljs-keyword">if</span> (colorOf(y) == RED) &#123;<br>                setColor(parentOf(x), BLACK);<br>                setColor(y, BLACK);<br>                setColor(parentOf(parentOf(x)), RED);<br>                x = parentOf(parentOf(x));<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">if</span> (x == leftOf(parentOf(x))) &#123;<br>                    x = parentOf(x);<br>                    rotateRight(x);<br>                &#125;<br>                setColor(parentOf(x), BLACK);<br>                setColor(parentOf(parentOf(x)), RED);<br>                rotateLeft(parentOf(parentOf(x)));<br>            &#125;<br>        &#125;<br>    &#125;<br>    root.color = BLACK;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>分析一下插入的几种情况：</p>
 <p>假设目前有一颗这样的红黑树</p>
-<p><img src="/img/java/RBTInsertBase.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTInsertBase.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="情况1">情况1</h3>
 <p>假设当前插入的元素为 <code>0004</code> ，很明显，有两个红色的节点连在了一起，不满足红黑树的性质</p>
 <ul>
 <li>红色节点的 <strong>父子</strong> 节点必须为黑色</li>
 </ul>
-<p><img src="/img/java/RBTInsert1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTInsert1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>这情况，即满足上述代码中的这</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (parentOf(x) == leftOf(parentOf(parentOf(x)))) &#123;...&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-comment">// x = 0004</span><br>    Entry&lt;K,V&gt; y = leftOf(parentOf(parentOf(x))); <span class="hljs-comment">// 0001</span><br>    <span class="hljs-keyword">if</span> (colorOf(y) == RED) &#123;<br>        setColor(parentOf(x), BLACK); <span class="hljs-comment">// 0003</span><br>        setColor(y, BLACK);<br>        setColor(parentOf(parentOf(x)), RED); <span class="hljs-comment">// 0002</span><br>        x = parentOf(parentOf(x));<br>    &#125;<br>&#125;<br>root.color = BLACK;<br></code></pre></td></tr></table></figure>
 <p>部分代码</p>
@@ -567,31 +566,31 @@
 <li>父节点 <code>0003</code> 和 叔节点 <code>0001</code> 都存在且为红色节点</li>
 </ul>
 <p>当前情况将 <code>0001、0003</code> 变成黑色即可重新达到平衡</p>
-<p><img src="/img/java/RBTInsert1Succ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTInsert1Succ.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="情况2">情况2</h3>
 <p>假设当前插入的元素为 <code>0005</code> ，一样，有两个红色的节点连在了一起，不满足红黑树的性质</p>
 <p>叔节点不存在或为 ⚫️ ，且新节点 <code>0005</code> 和父节点 <code>0004</code> <strong>在同一边</strong></p>
-<p><img src="/img/java/RBTInsert2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTInsert2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>对应的代码片段</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (parentOf(x) == leftOf(parentOf(parentOf(x)))) &#123;...&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-comment">// x = 0005</span><br>    Entry&lt;K,V&gt; y = leftOf(parentOf(parentOf(x))); <span class="hljs-comment">// null</span><br>    <span class="hljs-keyword">if</span> (colorOf(y) == RED) &#123;...&#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">if</span> (x == leftOf(parentOf(x))) &#123;...&#125;<br>        setColor(parentOf(x), BLACK); <span class="hljs-comment">// 0004</span><br>        setColor(parentOf(parentOf(x)), RED); <span class="hljs-comment">// 0003</span><br>        rotateLeft(parentOf(parentOf(x)));<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 结合上面的图来看 左旋源码</span><br><span class="hljs-comment">// 左旋：即将旋转中心(0003)作为其右节点(0004)的左节点，将原本的左节点作为旋转中心的右节点</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">rotateLeft</span><span class="hljs-params">(Entry&lt;K,V&gt; p)</span> &#123;<br>    <span class="hljs-comment">// p = 0003</span><br>    <span class="hljs-keyword">if</span> (p != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-comment">// r = p.right =&gt; 0004</span><br>        Entry&lt;K,V&gt; r = p.right;<br>        p.right = r.left; <span class="hljs-comment">// r.left = null</span><br>        <span class="hljs-keyword">if</span> (r.left != <span class="hljs-literal">null</span>)<br>            <span class="hljs-comment">// 如果 r存在左节点，那么将 r 的 左节点的父节点 变成 0003</span><br>            r.left.parent = p;<br>        <span class="hljs-comment">// 将 r 的父节点(0003) 变成 p 的父节点(0002)</span><br>        r.parent = p.parent;<br>        <span class="hljs-comment">// p的父节点为空，则直接将 r 作为当前红黑树的根节点</span><br>        <span class="hljs-keyword">if</span> (p.parent == <span class="hljs-literal">null</span>)<br>            root = r;<br>        <span class="hljs-comment">// 不为空，则判断 p 是左节点还是右节点，来决定 r(0004) 的位置</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p.parent.left == p)<br>            p.parent.left = r;<br>        <span class="hljs-keyword">else</span><br>            p.parent.right = r;<br>        <span class="hljs-comment">// 将 p 作为 其右节点(0004)的左节点</span><br>        r.left = p;<br>        <span class="hljs-comment">// 将 p(0003) 的父节点指向 r(0004)</span><br>        p.parent = r;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>将 <code>0005</code> 的父节点 <code>0004</code> 变成 ⚫️ ，将祖父节点 <code>0003</code> 变成 🔴 ，然后以 <code>0003</code> 为旋转中心进行左旋即可重新达到平衡</p>
 <blockquote>
 <p>左旋：<strong>左右左右</strong>，也就是<strong>左</strong>旋是把该节点作为其<strong>右</strong>孩子的<strong>左</strong>孩子，把赶走的节点作为该节点的<strong>右</strong>孩子</p>
 </blockquote>
-<p><img src="/img/java/RBTInsert2Succ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTInsert2Succ.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="情况3">情况3</h3>
 <p>稍微调整一下元素的插入顺序，先插入 <code>0005</code> 再插入 <code>0004</code> ，同样有两个红色的节点连在了一起</p>
 <p>叔节点不存在或为 ⚫️ ，且新节点 <code>0004</code> 和父节点 <code>0005</code> <strong>没在同一边</strong></p>
-<p><img src="/img/java/RBTInsert3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTInsert3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>对应的代码片段</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (parentOf(x) == leftOf(parentOf(parentOf(x)))) &#123;...&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-comment">// x = 0004</span><br>    Entry&lt;K,V&gt; y = leftOf(parentOf(parentOf(x))); <span class="hljs-comment">// null</span><br>    <span class="hljs-keyword">if</span> (colorOf(y) == RED) &#123;...&#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">if</span> (x == leftOf(parentOf(x))) &#123;<br>            x = parentOf(x); <span class="hljs-comment">// 0005</span><br>            rotateRight(x);<br>        &#125;<br>        ...<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 结合上面的图来看 右旋源码</span><br><span class="hljs-comment">// 右旋：即将旋转中心(0005)作为其左节点(0004)的右节点，将原本的右节点作为旋转中心的左节点</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">rotateRight</span><span class="hljs-params">(Entry&lt;K,V&gt; p)</span> &#123;<br>    <span class="hljs-comment">// p = 0005</span><br>    <span class="hljs-keyword">if</span> (p != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-comment">// l = p.left =&gt; 0004</span><br>        Entry&lt;K,V&gt; l = p.left;<br>        p.left = l.right; <span class="hljs-comment">// l.right = null</span><br>        <span class="hljs-comment">// 如果 l 存在右节点，那么将 l 的 右节点的父节点 变成 0005</span><br>        <span class="hljs-keyword">if</span> (l.right != <span class="hljs-literal">null</span>) l.right.parent = p;<br>        <span class="hljs-comment">// l(0004) 的父节点，变成 p(0005) 的父节点(0003)</span><br>        l.parent = p.parent;<br>        <span class="hljs-comment">// 同左旋 p的父节点为空，则直接将 r 作为当前红黑树的根节点</span><br>        <span class="hljs-keyword">if</span> (p.parent == <span class="hljs-literal">null</span>)<br>            root = l;<br>        <span class="hljs-comment">// 不为空，则判断 p 是左节点还是右节点，来决定 l(0004) 的位置</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p.parent.right == p)<br>            p.parent.right = l;<br>        <span class="hljs-keyword">else</span> p.parent.left = l;<br>        <span class="hljs-comment">// 将 p 作为 其左节点(0004)的右节点</span><br>        l.right = p;<br>        <span class="hljs-comment">// 将 p(0005) 的父节点指向 l(0004)</span><br>        p.parent = l;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>先以 <code>0004</code> 的父节点 <code>0005</code> 为旋转中心进行右旋</p>
 <blockquote>
 <p>右旋：<strong>右左右左</strong>，也就是<strong>右</strong>旋是把该节点作为其<strong>左</strong>孩子的<strong>右</strong>孩子，把赶走的节点作为该节点的<strong>左</strong>孩子</p>
 </blockquote>
-<p><img src="/img/java/RBTInsert3Succ-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTInsert3Succ-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>再重复情况2即可重新达到平衡</p>
-<p><img src="/img/java/RBTInsert3Succ-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTInsert3Succ-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>树两边的情况完全对称，即树左边的3种情况和上述完全对称，不过多说明</p>
 <h2 id="删除元素">删除元素</h2>
 <p>删除元素相对更为复杂，因为删除元素之后可能会破坏 <strong>黑高</strong> (即从根节点到所有可达叶子节点的黑色节点数量)，会破坏红黑树的平衡</p>
@@ -613,43 +612,43 @@
 <ul>
 <li>被删除的节点自身为 ⚫️ ，兄弟节点为 🔴</li>
 </ul>
-<p><img src="/img/java/RBTDel-1-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTDel-1-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>对应的代码片段</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (x == leftOf(parentOf(x))) &#123;<br>    <span class="hljs-comment">// 获取 x(0056) 的兄弟节点(0096)</span><br>    Entry&lt;K,V&gt; sib = rightOf(parentOf(x));<br><br>    <span class="hljs-comment">// 如果x的兄弟节点是红色节点</span><br>    <span class="hljs-comment">// 那么变成黑色，父节点变成红色，然后左旋</span><br>    <span class="hljs-keyword">if</span> (colorOf(sib) == RED) &#123;<br>        setColor(sib, BLACK);<br>        setColor(parentOf(x), RED); <span class="hljs-comment">// 0078</span><br>        rotateLeft(parentOf(x));<br>        sib = rightOf(parentOf(x)); <span class="hljs-comment">// 0085</span><br>    &#125;<br>    ...<br>&#125;<span class="hljs-keyword">else</span> &#123;...&#125;<br></code></pre></td></tr></table></figure>
 <p>将其父节点 <code>0078</code> 变成 🔴 ，并作为旋转中心进行左旋，然后将兄弟节点 <code>0096</code> 变成 ⚫️</p>
 <p>但很明显，调整完之后还没有达到平衡，⚫️ 数量不一致，紧接着看情况2</p>
-<p><img src="/img/java/RBTDel-1-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTDel-1-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="情况2-v2">情况2</h3>
 <p>接着看情况1之后， <code>0056</code> 的兄弟节点 <code>0085</code> 的两个子树都不存在</p>
 <ul>
 <li>当被删除的节点的兄弟节点的两个子树都不存在或都为 ⚫️</li>
 </ul>
-<p><img src="/img/java/RBTDel-1-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTDel-1-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>对应的代码片段</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (x == leftOf(parentOf(x))) &#123;<br>    <span class="hljs-comment">// 0085</span><br>    Entry&lt;K,V&gt; sib = rightOf(parentOf(x));<br>    ...<br>    <span class="hljs-comment">// 如果 sib 的两个节点是黑色节点 那么只需在将其变成红色，将父节点变成黑色，即可达到平衡</span><br>    <span class="hljs-keyword">if</span> (colorOf(leftOf(sib))  == BLACK &amp;&amp;<br>        colorOf(rightOf(sib)) == BLACK) &#123;<br>        setColor(sib, RED); <span class="hljs-comment">// 0085</span><br>        x = parentOf(x); <span class="hljs-comment">// 0078</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;...&#125;<br>&#125; <span class="hljs-keyword">else</span> &#123;...&#125;<br>setColor(x, BLACK);<br></code></pre></td></tr></table></figure>
 <p>将其兄弟节点 <code>0085</code> 变成 🔴 ，然后将父节点 <code>0078</code> 变成 ⚫️ ，即可重新达到平衡</p>
-<p><img src="/img/java/RBTDel-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTDel-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="情况3-v2">情况3</h3>
 <p>假如当前被删除的节点是 <code>0012</code> ，当其兄弟节点 <code>0023</code> 的右节点为空（为空，默认是 <code>NULL LEAF</code>）或者是 ⚫️</p>
 <ul>
 <li>被删除节点的兄弟节点的右节点为空或是 ⚫️</li>
 </ul>
-<p><img src="/img/java/RBTDel-3-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTDel-3-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>对应的代码片段</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (x == leftOf(parentOf(x))) &#123;<br>    Entry&lt;K,V&gt; sib = rightOf(parentOf(x)); <span class="hljs-comment">// 0023</span><br>    ...<br>    <span class="hljs-keyword">if</span> (colorOf(leftOf(sib))  == BLACK &amp;&amp;<br>        colorOf(rightOf(sib)) == BLACK) &#123;...&#125; <br>	<span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">if</span> (colorOf(rightOf(sib)) == BLACK) &#123;<br>            setColor(leftOf(sib), BLACK); <span class="hljs-comment">// NULL LEAF</span><br>            setColor(sib, RED);<br>            rotateRight(sib);<br>            sib = rightOf(parentOf(x));<br>        &#125;<br>        ...<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>将兄弟节点 <code>0023</code> 的左节点变成 ⚫️ ，自身变成 🔴 ，然后右旋</p>
 <p>不过经过调整也很明显没有达到平衡，黑高不相等，紧接着看情况4</p>
-<p><img src="/img/java/RBTDel-3-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTDel-3-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="情况4">情况4</h3>
 <p>情况3之后，被删除节点 <code>0012</code> 的兄弟节点 <code>0021</code> 的右节点 <code>0023</code> 为 🔴</p>
 <ul>
 <li>被删除节点的兄弟节点的右节点是红色节点</li>
 </ul>
-<p><img src="/img/java/RBTDel-3-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTDel-3-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>对应的代码片段</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (x == leftOf(parentOf(x))) &#123;<br>    Entry&lt;K,V&gt; sib = rightOf(parentOf(x)); <span class="hljs-comment">// 0021</span><br>    ...<br>    <span class="hljs-keyword">if</span> (colorOf(leftOf(sib))  == BLACK &amp;&amp;<br>        colorOf(rightOf(sib)) == BLACK) &#123;...&#125; <br>	<span class="hljs-keyword">else</span> &#123;<br>        ...<br>        setColor(sib, colorOf(parentOf(x)));<br>        setColor(parentOf(x), BLACK); <span class="hljs-comment">// 0021</span><br>        setColor(rightOf(sib), BLACK); <span class="hljs-comment">// 0023</span><br>        rotateLeft(parentOf(x));<br>        x = root;<br>    &#125;<br>&#125;<br>setColor(x, BLACK);<br></code></pre></td></tr></table></figure>
 <p>将其兄弟节点 <code>0021</code> 变成其父节点 <code>0015</code> 的颜色，如果父节点不存在，则变成 ⚫️ ，也就是说父节点可红可黑，然后将父节点 <code>0015</code> 和 兄弟节点的右节点 <code>0023</code> 都变成 ⚫️ ，然后对父节点 <code>0015</code> 作为进行左旋</p>
-<p><img src="/img/java/RBTDel-4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://blog.archonk.top/img/java/RBTDel-4.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>树两边的情况完全对称，即当删除的节点为右节点的4种情况和上述完全对称，不过多说明</p>
 <h2 id="TreeSet">TreeSet</h2>
 <p><em>TreeSet</em> 和 <em>HashSet、LinkedHashSet</em> 一样，都是对其 <em>Map</em> 版本的一个简单包装</p>
@@ -711,7 +710,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>集合源码解析 - TreeMap &amp; TreeSet</div>
+      <div>TreeMap &amp; TreeSet 源码分析</div>
       <div>http://blog.archon.top/2022/10/15/集合源码解析 - TreeMap &amp; TreeSet/</div>
     </div>
     <div class="license-meta">
@@ -756,9 +755,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/20/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20%E7%BA%A2%E9%BB%91%E6%A0%91%E9%83%A8%E5%88%86/" title="集合源码解析 - HashMap 红黑树部分">
+                      <a href="/2022/10/20/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20%E7%BA%A2%E9%BB%91%E6%A0%91%E9%83%A8%E5%88%86/" title="HashMap 红黑树部分源码分析">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">集合源码解析 - HashMap 红黑树部分</span>
+                        <span class="hidden-mobile">HashMap 红黑树部分源码分析</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

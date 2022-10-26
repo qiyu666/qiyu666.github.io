@@ -20,14 +20,14 @@
   
     <meta name="description" content="HashMap &amp; HashSet 部分源码剖析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="集合源码解析 - HashMap &amp; HashSet">
+<meta property="og:title" content="HashMap &amp; HashSet 源码分析">
 <meta property="og:url" content="http://blog.archon.top/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20&%20HashSet/index.html">
 <meta property="og:site_name" content="Archonk&#96;s Blog">
 <meta property="og:description" content="HashMap &amp; HashSet 部分源码剖析">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.archon.top/img/ds/RBTree.png">
 <meta property="article:published_time" content="2022-10-14T00:37:14.301Z">
-<meta property="article:modified_time" content="2022-10-26T09:09:14.155Z">
+<meta property="article:modified_time" content="2022-10-26T09:26:38.793Z">
 <meta property="article:author" content="Archonk">
 <meta property="article:tag" content="HashMap">
 <meta property="article:tag" content="HashSet">
@@ -38,7 +38,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>集合源码解析 - HashMap &amp; HashSet - Archonk`s Blog</title>
+  <title>HashMap &amp; HashSet 源码分析 - Archonk`s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -236,7 +236,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="集合源码解析 - HashMap &amp; HashSet"></span>
+            <span id="subtitle" data-typed-text="HashMap &amp; HashSet 源码分析"></span>
           
         </div>
 
@@ -406,73 +406,73 @@
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20ArrayList/" title="集合源码解析 - ArrayList"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20ArrayList/" title="ArrayList 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - ArrayList</span>
+          <span class="category-post">ArrayList 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20&amp;%20HashSet/" title="集合源码解析 - HashMap &amp; HashSet"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20&amp;%20HashSet/" title="HashMap &amp; HashSet 源码分析"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">集合源码解析 - HashMap &amp; HashSet</span>
+          <span class="category-post">HashMap &amp; HashSet 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/20/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20%E7%BA%A2%E9%BB%91%E6%A0%91%E9%83%A8%E5%88%86/" title="集合源码解析 - HashMap 红黑树部分"
+        <a href="/2022/10/20/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20HashMap%20%E7%BA%A2%E9%BB%91%E6%A0%91%E9%83%A8%E5%88%86/" title="HashMap 红黑树部分源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - HashMap 红黑树部分</span>
+          <span class="category-post">HashMap 红黑树部分源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedHashMap%20&amp;%20LinkedHashSet/" title="集合源码解析 - LinkedHashMap &amp; LinkedHashSet"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedHashMap%20&amp;%20LinkedHashSet/" title="LinkedHashMap &amp; LinkedHashSet 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - LinkedHashMap &amp; LinkedHashSet</span>
+          <span class="category-post">LinkedHashMap &amp; LinkedHashSet 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedList/" title="集合源码解析 - LinkedList"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedList/" title="LinkedList 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - LinkedList</span>
+          <span class="category-post">LinkedList 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="集合源码解析 - PriorityQueue"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="PriorityQueue 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - PriorityQueue</span>
+          <span class="category-post">PriorityQueue 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20Stack%20&amp;%20Queue%20&amp;%20ArrayDeque/" title="集合源码解析 - Stack &amp; Queue &amp; ArrayDeque"
+        <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20Stack%20&amp;%20Queue%20&amp;%20ArrayDeque/" title="Stack &amp; Queue &amp; ArrayDeque 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - Stack &amp; Queue &amp; ArrayDeque</span>
+          <span class="category-post">Stack &amp; Queue &amp; ArrayDeque 源码分析</span>
         </a>
       
     
       
       
-        <a href="/2022/10/15/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20TreeMap%20&amp;%20TreeSet/" title="集合源码解析 - TreeMap &amp; TreeSet"
+        <a href="/2022/10/15/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20TreeMap%20&amp;%20TreeSet/" title="TreeMap &amp; TreeSet 源码分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">集合源码解析 - TreeMap &amp; TreeSet</span>
+          <span class="category-post">TreeMap &amp; TreeSet 源码分析</span>
         </a>
       
     
@@ -499,7 +499,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">集合源码解析 - HashMap &amp; HashSet</h1>
+            <h1 style="display: none">HashMap &amp; HashSet 源码分析</h1>
             
               <p class="note note-info">
                 
@@ -514,13 +514,12 @@
                 
                 <p>HashMap &amp; HashSet 部分源码剖析</p>
 <span id="more"></span>
-<h1>HashMap &amp; HashSet</h1>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.pdai.tech/md/java/collection/java-map-HashMap&amp;HashSet.html#java8-hashmap">Map - HashSet &amp; HashMap 源码解析</a></p>
 </blockquote>
 <p><em>HashMap</em> 在jdk1.7中是采用的 <strong>数组+链表</strong>，而在jdk1.8中则变为了 <strong>数组+链表+红黑树</strong>。</p>
 <p>在jdk1.7中是采用链表来解决哈希冲突，查找的时间复杂度取决于链表的长度，即 <strong>O(n)</strong> ，而在1.8中，当数组(&gt;64)和链表(8)达到了一定的长度会将其转换为红黑树，这使得查找的时间复杂度降低到了 <strong>O(logN)</strong> 。</p>
-<p><img src="/img/java/java-collection-hashmap8.png" srcset="/img/loading.gif" lazyload alt="结构图"></p>
+<p><img src="https://blog.archonk.top/img/java/java-collection-hashmap8.png" srcset="/img/loading.gif" lazyload alt="结构图"></p>
 <h2 id="内部默认参数">内部默认参数</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 默认初始化容量</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">DEFAULT_INITIAL_CAPACITY</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">4</span>; <span class="hljs-comment">// aka 16</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 最大容量 1073741824</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">MAXIMUM_CAPACITY</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">30</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 默认负载因子</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">float</span> <span class="hljs-variable">DEFAULT_LOAD_FACTOR</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.75f</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 树化条件一：桶的长度&gt;=8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">TREEIFY_THRESHOLD</span> <span class="hljs-operator">=</span> <span class="hljs-number">8</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 红黑树退化条件：桶的长度小于 6</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">UNTREEIFY_THRESHOLD</span> <span class="hljs-operator">=</span> <span class="hljs-number">6</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 树化条件二：链表长度超过 64</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">MIN_TREEIFY_CAPACITY</span> <span class="hljs-operator">=</span> <span class="hljs-number">64</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 底层结构</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">transient</span> Node&lt;K,V&gt;[] table;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 保存缓存的 entrySet()。请注意，AbstractMap 字段用于 keySet() 和 values()。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">transient</span> Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 当前哈希表的大小</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">transient</span> <span class="hljs-type">int</span> size;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 操作次数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">transient</span> <span class="hljs-type">int</span> modCount;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 扩容的临界点</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">int</span> threshold;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 负载因子</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">final</span> <span class="hljs-type">float</span> loadFactor;<br></code></pre></td></tr></table></figure>
 <h2 id="构造方法">构造方法</h2>
@@ -615,7 +614,7 @@ HashMap 红黑树部分待补充...(在看了在看了)
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>集合源码解析 - HashMap &amp; HashSet</div>
+      <div>HashMap &amp; HashSet 源码分析</div>
       <div>http://blog.archon.top/2022/10/14/集合源码解析 - HashMap &amp; HashSet/</div>
     </div>
     <div class="license-meta">
@@ -660,9 +659,9 @@ HashMap 红黑树部分待补充...(在看了在看了)
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedHashMap%20&amp;%20LinkedHashSet/" title="集合源码解析 - LinkedHashMap &amp; LinkedHashSet">
+                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20LinkedHashMap%20&amp;%20LinkedHashSet/" title="LinkedHashMap &amp; LinkedHashSet 源码分析">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">集合源码解析 - LinkedHashMap &amp; LinkedHashSet</span>
+                        <span class="hidden-mobile">LinkedHashMap &amp; LinkedHashSet 源码分析</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -670,8 +669,8 @@ HashMap 红黑树部分待补充...(在看了在看了)
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="集合源码解析 - PriorityQueue">
-                        <span class="hidden-mobile">集合源码解析 - PriorityQueue</span>
+                      <a href="/2022/10/14/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%20-%20PriorityQueue/" title="PriorityQueue 源码分析">
+                        <span class="hidden-mobile">PriorityQueue 源码分析</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
