@@ -32,3 +32,7 @@ button[title^='xmr_'] img[alt^='xmr_'] {
   width: 5rem;
   height: auto;
 }
+
+.wl-emoji-popup .wl-tabs{
+  height: auto;
+}
